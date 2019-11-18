@@ -2,7 +2,7 @@ package main
 
 import "net/http"
 
-func authenticate(w ResponseWriter, r *http.Request) {
+func authenticate(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	user, _ := UserByEmail(r.PostFormValue("email"))
 	if user.Password == data.Encrypt(r.PostFormValue("password")) {
